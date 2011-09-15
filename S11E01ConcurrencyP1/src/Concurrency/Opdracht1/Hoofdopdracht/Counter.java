@@ -14,7 +14,9 @@ public class Counter {
 	
 	
 	public Counter(int l, int b, int e) {
-		int upperbound = e;
+		currentNumber = b;
+		upperbound = e;
+		numberOfPossibleNumbers = 0;
 		switch(l) {
 		case 0:
 			lock = new TaSLock();
@@ -29,12 +31,16 @@ public class Counter {
 			lock = new TaSLock();
 		}
 		
-		currentNumber = b;
-		numberOfPossibleNumbers = 0;
+		
 	}
 	
 	public boolean isDone(){
-		return (currentNumber == upperbound);
+		return (currentNumber >= upperbound);
+	}
+	
+	
+	public int giveNumberOfPossibleNumbers() {
+		return numberOfPossibleNumbers;
 	}
 	
 	public int getAndIncrement() {
